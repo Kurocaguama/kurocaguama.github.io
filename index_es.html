@@ -112,7 +112,7 @@ body {
 <div class="header">
     <h1>Bienvenido a mi casa virtual.</h1>
     <p>🚨🚧🚨 Esta página está en trabajo constante. 🚨🚧🚨</p>
-    <p>Actualización más reciente: 20/Sept/2025</p>
+    <p>Actualización más reciente: 2/Oct/2025</p>
 </div>
 
 
@@ -148,11 +148,79 @@ body {
         <h2>Acerca de mí</h2>
         <p>Soy un matemático de la <a href="https://www.unam.mx/">Universidad Nacional Autónoma de México (UNAM)</a>, actualmente en mi primer año de la maestría en el Posgrado de Ciencias e Ingeniería en Computación.</p>
         <p>Mi área de trabajo actual es el Procesamiento de Lenguaje Natural, enfocado en la alineación de LLMs, la toma de decisiones e inferencia lógica. En un futuro (esperemos no muy lejano) será IA de juegos.🎮</p>
-        <p>El diseño de páginas web apesta, así que perdón si esto se ve terrible.</p>
+        <p>El diseño de páginas web apesta, pero no me disculpo si esto se ve terrible.</p>
         <h3>Pasatiempos</h3>
         <p>League of Legends</p>
         <p>Correr 🏃🏽‍♂️</p>
         <p>Futbol ⚽</p>
+        <div class = "container">
+          <h1 class = "poll-question">¿Messi es la foquin cabra?</h1>
+          <form id="poll-form" class="poll-form">
+            <label>
+              <input type = "radio" name = "vote" value = "yes"> Sí
+            </label>
+            <label>
+              <input type = "radio" name = "vote" value = "yes"> Sí pero en otro botón
+            </label>
+            <label>
+              <input type = "radio" name = "vote" value = "yes"> Sí x3
+            </label>
+            <button type = "submit" class = "vote-button"> Vota</button>
+          </form>
+          <div id = "results" class = "results">
+            <h2 class = "results-title">
+              Resultados
+            </h2>
+            <div class = "results-count">
+              <p>
+                Yes:
+                <span id="yes-count" class = "count">0</span>
+              </p>
+              <p>No: 
+                <span id = "no-count" class = "count">0</span>
+              </p>
+            </div>
+          </div>  
+        </div>
+        <script>
+          // Initialize vote counts
+          let votes = {
+            yes: 0,
+            no: 0
+          };
+
+          // Get form and result elements
+          const form = document.getElementById('poll-form');
+          const yesCountEl = document.getElementById('yes-count');
+          const noCountEl = document.getElementById('no-count');
+
+          // Handle form submission
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get selected radio button
+            const selectedVote = document.querySelector('input[name="vote"]:checked');
+            
+            if (!selectedVote) {
+              alert('Por favor selecciona una opción');
+              return;
+            }
+            
+            // Update vote count
+            const voteValue = selectedVote.value;
+            votes[voteValue]++;
+            
+            // Update display
+            yesCountEl.textContent = votes.yes;
+            noCountEl.textContent = votes.no;
+            
+            // Reset form
+            form.reset();
+            
+            // Optional: Show confirmation
+            alert('¡Gracias por votar!');
+          });
+        </script>
     </div>
     <div class="main">
       <section id="education">
@@ -181,6 +249,7 @@ body {
           <p><a href="https://scholar.google.com/citations?user=VkcbfuoAAAAJ&hl=es">Google Scholar</a></p>
           <p><a href="https://github.com/Kurocaguama">Github</a></p>
           <p><a href="https://orcid.org/0009-0007-4265-1070">orcid</a></p>
+          <p><a href = "https://huggingface.co/Kurosawama">HuggingFace</a></p>
         </section>
     </div>
 </div>

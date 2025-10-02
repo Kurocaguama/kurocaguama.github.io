@@ -113,7 +113,7 @@ body {
 <div class="header">
     <h1>Welcome to my virtual home.</h1>
     <p>🚨🚧🚨 This page is a work in progress. 🚨🚧🚨</p>
-    <p>Most recent update: 20/Sept/2025</p>
+    <p>Most recent update: 2/Oct/2025</p>
 </div>
 
 
@@ -149,11 +149,79 @@ body {
         <h2>About me</h2>
         <p>I'm a mathematician from the <a href="https://www.unam.mx/">Universidad Nacional Autónoma de México (UNAM)</a> currently in the first year of my Master's degree.</p>
         <p>My current research area is Natural Language Processing, focused on LLM alignment, applied in Decision Making and Logical Inference, and (in a hopefully close future) Game AI. 🎮</p>
-        <p>Web design sucks so I'm sorry if this page looks bad.</p>
+        <p>Web design sucks, however I'm not sorry if this page looks bad.</p>
         <h3>Hobbies</h3>
         <p>League of Legends</p>
         <p>Running 🏃🏽‍♂️</p>
         <p>Football ⚽</p>
+        <div class = "container">
+          <h1 class = "poll-question">Messi is the goat?</h1>
+          <form id="poll-form" class="poll-form">
+            <label>
+              <input type = "radio" name = "vote" value = "yes"> Yes
+            </label>
+            <label>
+              <input type = "radio" name = "vote" value = "yes"> Yes but a different button
+            </label>
+            <label>
+              <input type = "radio" name = "vote" value = "yes"> Yes x3
+            </label>
+            <button type = "submit" class = "vote-button"> Vota</button>
+          </form>
+          <div id = "results" class = "results">
+            <h2 class = "results-title">
+              Results
+            </h2>
+            <div class = "results-count">
+              <p>
+                Yes:
+                <span id="yes-count" class = "count">0</span>
+              </p>
+              <p>No: 
+                <span id = "no-count" class = "count">0</span>
+              </p>
+            </div>
+          </div>  
+        </div>
+        <script>
+          // Initialize vote counts
+          let votes = {
+            yes: 0,
+            no: 0
+          };
+
+          // Get form and result elements
+          const form = document.getElementById('poll-form');
+          const yesCountEl = document.getElementById('yes-count');
+          const noCountEl = document.getElementById('no-count');
+
+          // Handle form submission
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get selected radio button
+            const selectedVote = document.querySelector('input[name="vote"]:checked');
+            
+            if (!selectedVote) {
+              alert('Por favor selecciona una opción');
+              return;
+            }
+            
+            // Update vote count
+            const voteValue = selectedVote.value;
+            votes[voteValue]++;
+            
+            // Update display
+            yesCountEl.textContent = votes.yes;
+            noCountEl.textContent = votes.no;
+            
+            // Reset form
+            form.reset();
+            
+            // Optional: Show confirmation
+            alert('¡Gracias por votar!');
+          });
+        </script>
     </div>
     <div class="main">
       <section id="education">
@@ -182,6 +250,7 @@ body {
           <p><a href="https://scholar.google.com/citations?user=VkcbfuoAAAAJ&hl=es">Google Scholar</a></p>
           <p><a href="https://github.com/Kurocaguama">Github</a></p>
           <p><a href="https://orcid.org/0009-0007-4265-1070">orcid</a></p>
+          <p><a href = "https://huggingface.co/Kurosawama">HuggingFace</a></p>
         </section>
     </div>
 </div>
